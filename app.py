@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask import render_template
+from flask import render_template_string
 from flask import abort
 from functools import reduce
 
@@ -22,6 +23,12 @@ def get_directory_structure(rootdir):
     return dir
 
 
+def load_file(path):
+    with open(path) as f:
+        contents = f.read()
+    return contents
+
+
 @app.route('/')
 def index():
     files = get_directory_structure("student_work")
@@ -32,7 +39,8 @@ def index():
 def get_student_file(term, student, file):
     if not os.path.isfile(f"student_work/{term}/{student}/{file}"):
         abort(404)
-    return render_template(f"../student_work/{term}/{student}/{file}")
+    file_string = load_file(f"student_work/{term}/{student}/{file}")
+    return render_template_string(file_string)
 
 
 if __name__ == "__main__":
