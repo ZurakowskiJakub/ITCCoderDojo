@@ -1,0 +1,33 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: Calibri, Arial;
+}
+
+.card-holder{
+    display: flex;
+}
+
+.card{
+    border: 1px solid #222222;
+    margin: 1.25em;
+    background-color: #dddddd;
+    display: inline-block;
+    max-width: 20%;
+}
+
+.card-header{
+    background-color: #222222;
+    padding: 1em;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.card-content{
+    padding:1em;
+}
+
+.card-content ul{
+    margin: 0em;
+}

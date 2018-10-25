@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>IT Carlow Coder Dojo HTML pages</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div class="card-holder">
+            {% for term, nothing in files['student_work'].items() %}
+                <div class="card">
+                    <div class="card-header">
+                        {{term}}
+                    </div>
+                    {% for student, nothing in files['student_work'][term].items() %}
+                        <div class="card-content">
+                            <div class="card-student">
+                                {{student}}
+                            </div>
+                            <ul>
+                                {% for file, nothing in files['student_work'][term][student].items() %}
+                                    <li>
+                                        <a class="" href="{{term}}/{{student}}/{{file}}">{{file}}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
